@@ -1,7 +1,7 @@
-1. Unutar backend folder treba odraditi sljedeće:
+1. Unutar backend foldera treba odraditi sljedeće:
 	- npm install
 	- pokrenuti server pomoću "node server.js"
-2. U front-endu otvoriti index.html
+2. Otvoriti front-end folder i otvoriti index.html
 
 
 Napomena:
