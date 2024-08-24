@@ -7,4 +7,4 @@
 Napomena:
 
 test.json je kopija baze db.json. Ukoliko se dogode promjene može se samo kopirati
-izgleda početne baze iz test.json u db.json.
+izgled početne baze iz test.json u db.json.
