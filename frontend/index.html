@@ -102,6 +102,12 @@
           };
 
           const response = await fetch(`http://localhost:3000${url}`, options);
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || "An unknown error occurred.");
+          }
+
           return response.json();
         }
 
@@ -200,6 +206,9 @@
             },
             onRowRemoved: function (e) {
               grid.refresh();
+            },
+            onDataErrorOccurred: function (e) {
+              alert("Error: " + e.error.message);
             },
           })
           .dxDataGrid("instance");

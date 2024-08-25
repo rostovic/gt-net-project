@@ -17,7 +17,20 @@ const writeDatabase = (data) => {
   fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), "utf8");
 };
 
+const isEmpty = (prop) => {
+  if (prop.length === 0) return true;
+  return false;
+};
+
 const insertUser = (newUser) => {
+  if (
+    isEmpty(newUser.first_name) ||
+    isEmpty(newUser.last_name) ||
+    isEmpty(newUser.email) ||
+    isEmpty(newUser.telephone)
+  ) {
+    return { message: "error" };
+  }
   const db = readDatabase();
   const newId = crypto.randomUUID();
   const userWithIdFirst = { id: newId, ...newUser };
@@ -68,7 +81,7 @@ app.use((req, res, next) => {
 
 app.get("/users", (req, res) => {
   const db = readDatabase();
-  return res.json(db.users);
+  return res.status(200).json(db.users);
 });
 
 app.post("/users", (req, res) => {
